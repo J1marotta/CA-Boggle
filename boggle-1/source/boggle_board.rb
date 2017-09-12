@@ -1,53 +1,46 @@
 class BoggleBoard
 
   def initialize
-    @board= [
-    @topline = ["_","_","_","_"],
-    @second = ["_","_","_","_"],
-    @third = ["_","_","_","_"],
-    @fourth = ["_","_","_","_"]
-    ]
+    # creates an array of 16 underscores
+    @spaces = Array.new(16, "_")
+    @alphabet = ("A".."Z").to_a
   end
 
+
   def shake!
-    chars = ("A".."Z").to_a
-    @board.each do |i|
-      i.each do |j|
-        j.gsub! "_", chars.sample
-      end
+    #new variable to save our original
+    shuffled = @spaces
+    output = String.new
+
+    shuffled.map! { |x| @alphabet.sample}
+
+    4.times do
+      output << shuffled.shift(4).join + "\n"
     end
 
-    puts @topline.join
-    puts @second.join
-    puts @third.join
-    puts @fourth.join
-
+    output
   end
 
   # Defining to_s on an object controls how the object is
   # represented as a string, e.g., when you pass it to puts
   def to_s
-    puts
-    puts @topline.join
-    puts @second.join
-    puts @third.join
-    puts @fourth.join
-    puts
+    #new string for output
+    output_string = String.new
+
+    #new variable to preserve spaces
+    letter_array = @spaces
+
+    4.times do
+      output_string << letter_array.shift(4).join + "\n"
+    end
+
+    output_string
+
   end
+
+
 end
 
 
-#
-# class dice
-#
-#   def initialize
-#   end
-# end
-
-
-
-
-
 board = BoggleBoard.new
-board.to_s
-board.shake!
+print board.shake!
