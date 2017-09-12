@@ -10,15 +10,8 @@ class BoggleBoard
   def shake!
     # new variable to save our original
     shuffled = @spaces
-    # output = String.new
-    #
+    
     shuffled.map! { |x| @alphabet.sample}
-    #
-    # 4.times do
-    #   output << shuffled.sample(4).join + "\n"
-    # end
-    #
-    # output
 
     # Using rows
     row1 = String.new
