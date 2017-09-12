@@ -8,17 +8,34 @@ class BoggleBoard
 
 
   def shake!
-    #new variable to save our original
+    # new variable to save our original
     shuffled = @spaces
-    output = String.new
-
+    # output = String.new
+    #
     shuffled.map! { |x| @alphabet.sample}
+    #
+    # 4.times do
+    #   output << shuffled.sample(4).join + "\n"
+    # end
+    #
+    # output
 
-    4.times do
-      output << shuffled.shift(4).join + "\n"
-    end
+    # Using rows
+    row1 = String.new
+    row2 = String.new
+    row3 = String.new
+    row4 = String.new
 
-    output
+
+    row1 << shuffled.sample(4).join
+    row2 << shuffled.sample(4).join
+    row3 << shuffled.sample(4).join
+    row4 << shuffled.sample(4).join
+
+
+    return row1, row2, row3, row4
+
+
   end
 
   # Defining to_s on an object controls how the object is
@@ -31,7 +48,7 @@ class BoggleBoard
     letter_array = @spaces
 
     4.times do
-      output_string << letter_array.shift(4).join + "\n"
+      output_string << letter_array.sample(4).join + "\n"
     end
 
     output_string
@@ -40,7 +57,8 @@ class BoggleBoard
 
 
 end
-
+#
 
 board = BoggleBoard.new
-print board.shake!
+print board.to_s
+puts board.shake!
