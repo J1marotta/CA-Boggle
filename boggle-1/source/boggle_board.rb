@@ -1,17 +1,42 @@
+
+# initalize dice constants
+
+DICE = [["A","A","E","E","G","N"],
+        ["E","L","R","T","T","Y"],
+        ["A","O","O","T","T","W"],
+        ["A","B","B","J","O","O"],
+        ["E","H","R","T","V","W"],
+        ["C","I","M","O","T","U"],
+        ["D","I","S","T","T","Y"],
+        ["E","I","O","S","S","T"],
+        ["D","E","L","R","V","Y"],
+        ["A","C","H","O","P","S"],
+        ["H","I","M","N","Q","U"],
+        ["E","E","I","N","S","U"],
+        ["E","E","G","H","N","W"],
+        ["A","F","F","K","P","S"],
+        ["H","L","N","N","R","Z"],
+        ["D","E","I","L","R","X"]]
+
+
+
+
+
+
 class BoggleBoard
 
   def initialize
     # creates an array of 16 underscores
     @spaces = Array.new(16, "_")
-    @alphabet = ("A".."Z").to_a
+    # @alphabet = DICE.map {|die| die[rand(6)]}
   end
 
 
   def shake!
     # new variable to save our original
-    shuffled = @spaces
+    emptyboard = @spaces
 
-    shuffled.map! { |x| @alphabet.sample}
+    emptyboard = DICE.map {|die| die[rand(6)]}
 
     # Using rows
     row1 = String.new
@@ -20,10 +45,10 @@ class BoggleBoard
     row4 = String.new
 
 
-    row1 << shuffled.sample(4).join
-    row2 << shuffled.sample(4).join
-    row3 << shuffled.sample(4).join
-    row4 << shuffled.sample(4).join
+    row1 << emptyboard.sample(4).join
+    row2 << emptyboard.sample(4).join
+    row3 << emptyboard.sample(4).join
+    row4 << emptyboard.sample(4).join
 
     return row1, row2, row3, row4
   end
@@ -50,49 +75,41 @@ class BoggleBoard
 end
 #
 
-boggle_dice_letters = [["A","A","E","E","G","N"],
-                      ["E","L","R","T","T","Y"],
-                      ["A","O","O","T","T","W"],
-                      ["A","B","B","J","O","O"],
-                      ["E","H","R","T","V","W"],
-                      ["C","I","M","O","T","U"],
-                      ["D","I","S","T","T","Y"],
-                      ["E","I","O","S","S","T"],
-                      ["D","E","L","R","V","Y"],
-                      ["A","C","H","O","P","S"],
-                      ["H","I","M","N","Q","U"],
-                      ["E","E","I","N","S","U"],
-                      ["E","E","G","H","N","W"],
-                      ["A","F","F","K","P","S"],
-                      ["H","L","N","N","R","Z"],
-                      ["D","E","I","L","R","X"]]
 
+#
+# class BoggleDice
+#
+# 	def initialize(sides)
+# 		@sides = sides
+# 	end
+#
+#
+# 	def rolldice
+# 		@sides.sample
+# 	end
+#
+# end
+#
+#
+# #
+# #
 
-class BoggleDice
-
-	def initialize(sides)
-		@sides = sides
-	end
-
-
-	def rolldice
-		@sides.sample
-	end
-
-end
-
-
-mydice = boggle_dice_letters.map { |die| BoggleDice.new(die) }
-mydice.each { |die| puts die.rolldice }
+# mydice = boggle_dice_letters.map { |die| BoggleDice.new(die) }
+# rolleddice = mydice.each { |die| die }
 
 
 
+ # puts  --------
+ # print rolleddice.to_s
 
+ board = BoggleBoard.new
+ print board.to_s
 
-
-
-
-
-board = BoggleBoard.new
-print board.to_s
-puts board.shake!
+ puts
+ puts board.shake!
+ puts board.to_s
+  puts board.shake!
+  puts board.to_s
+   puts board.shake!
+   puts board.to_s
+    puts board.shake!
