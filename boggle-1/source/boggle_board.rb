@@ -1,6 +1,6 @@
 
-# initalize dice constants
-
+# # initalize dice constants
+#
 DICE = [["A","A","E","E","G","N"],
         ["E","L","R","T","T","Y"],
         ["A","O","O","T","T","W"],
@@ -28,7 +28,7 @@ class BoggleBoard
   def initialize
     # creates an array of 16 underscores
     @spaces = Array.new(16, "_")
-    # @alphabet = DICE.map {|die| die[rand(6)]}
+
   end
 
 
@@ -36,6 +36,7 @@ class BoggleBoard
     # new variable to save our original
     emptyboard = @spaces
 
+    # randomise with our constants with access 6 deep into the arrays
     emptyboard = DICE.map {|die| die[rand(6)]}
 
     # Using rows
@@ -68,6 +69,8 @@ class BoggleBoard
     end
 
     output_string
+
+
 
   end
 
